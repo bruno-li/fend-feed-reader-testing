@@ -33,11 +33,11 @@ $(function() {
          */
 
          it('URL should be defined and not empty', function(){
+             // loops through the array of objects and check if URL property is defined
              allFeeds.forEach(function(feed){
                 expect(feed.url).toBeDefined();
                 expect(feed.url).not.toBe("");
              });
-
          });
 
 
@@ -45,6 +45,13 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
+        it('name should be defined and not empty',function(){
+        // loops through the array of objects and check if name property is defined
+            allFeeds.forEach(function(feed){
+                expect(feed.name).toBeDefined();
+                expect(feed.name).not.toBe("");
+            });
+        });
     });
 
 
