@@ -65,8 +65,8 @@ $(
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-        
-        // checks if element class is toggle when page loads
+
+      // checks if element class is toggle when page loads
       it("element should be hidden by default", function() {
         let menu = document.querySelector(".menu-hidden");
         expect(menu.classList.contains("menu-hidden")).toBe(true);
@@ -78,8 +78,23 @@ $(
           * clicked and does it hide when clicked again.
           */
 
-      /* TODO: Write a new test suite named "Initial Entries" */
+      it("should be able to display and hide when clicked", function() {
+
+        // check the state of the menu when clicked
+        let menuClick = document.querySelector(".menu-hidden");
+
+        if (menuClick) {
+
+          expect(menuClick.classList.contains("menu-hidden")).toBe(true);
+
+        } else if (!menuClick) {
+            
+          expect(menuClick.classList.contains("menu-hidden")).toBe(false);
+        }
+      });
     });
+
+    /* TODO: Write a new test suite named "Initial Entries" */
 
     /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
