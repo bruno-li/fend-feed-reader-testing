@@ -12,6 +12,8 @@
  * since some of these tests may require DOM elements. We want
  * to ensure they don't run until the DOM is ready.
  */
+
+
 $(
   (function() {
     /* This is our first test suite - a test suite just contains
@@ -57,7 +59,7 @@ $(
       });
     });
 
-    /* TODO: Write a new test suite named "The menu" */
+    /***********    Menu testing suite    ***************/
 
     describe("The Menu", function() {
       /* TODO: Write a test that ensures the menu element is
@@ -90,7 +92,8 @@ $(
       });
     });
 
-    /* TODO: Write a new test suite named "Initial Entries" */
+        /***********    Initial entries testing suite    ***************/
+
     describe("Initial Entries", function() {
       /* TODO: Write a test that ensures when the loadFeed
                  * function is called and completes its work, there is at least
@@ -113,13 +116,36 @@ $(
       });
     });
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
+
+
+        /***********    New Feed Selection testing suite    ***************/
+
+
     describe("New Feed Selection", function() {
       /* TODO: Write a test that ensures when a new feed is loaded
                  * by the loadFeed function that the content actually changes.
                  * Remember, loadFeed() is asynchronous.
                  * 
                  */
+      let OldFeedTest;
+
+      // asynchronous, call back.
+      // make sure content actually changed when a new feed is loaded by the function call loadFeed
+      beforeEach(function(done) {
+        loadFeed(0, function() {
+          OldFeedTest = document.querySelector(".feed").innerHTML;
+          loadFeed(1, function() {
+            done();
+          });
+        });
+      });
+
+      // makes sure newsfeed are not dupplicated
+      it("new feeds content actually changes", function(done) {
+        let newFeedLoad = document.querySelector(".feed").innerHTML;
+        expect(OldFeedTest).not.toBe(newFeedLoad);
+        done();
+      });
     });
   })()
 );
